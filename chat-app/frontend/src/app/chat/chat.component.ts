@@ -10,6 +10,7 @@ export class ChatComponent implements OnInit {
   socket: any;
   message: string = '';
   messages: string[] = [];
+  chatOpen: boolean = false;
 
   ngOnInit() {
     // Connessione al server Flask con Socket.IO
@@ -21,13 +22,23 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  sendMessage(message : HTMLInputElement) {
+  sendMessage(message: HTMLInputElement) {
     this.message = message.value;
     if (this.message.trim()) {
       // Invia il messaggio al server Flask
       this.socket.emit('message', this.message);
       this.messages.push(this.message);
-      this.message = '';  // Pulisce la casella di testo
+      message.value = '';  // Pulisce la casella di testo
     }
+  }
+
+  // Metodo per aprire il popup della chat
+  openChat(): void {
+    this.chatOpen = true;
+  }
+
+  // Metodo per chiudere il popup della chat
+  closeChat(): void {
+    this.chatOpen = false;
   }
 }
