@@ -1,0 +1,194 @@
+/* General reset for margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Container of the whole chat */
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 480px;
+    height: 600px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Messages section with scrollable chat */
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Keyframe for the message fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Individual message bubble styling */
+  .messages div {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  /* Keyframe for sliding messages */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Custom message for the user (align right) */
+  .messages div:nth-child(odd) {
+    align-self: flex-end;
+    background-color: #0e76a8;
+    color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 5px;
+  }
+  
+  /* Custom message for recipient (align left) */
+  .messages div:nth-child(even) {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #333;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 5px;
+  }
+  
+  /* Input field styling */
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  input:focus {
+    border-color: #0e76a8;
+    box-shadow: 0 0 5px rgba(14, 118, 168, 0.5);
+  }
+  
+  /* Send button styling */
+  button {
+    background-color: #0e76a8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0b5d7f;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Typing animation for the user */
+  .typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #0e76a8;
+    visibility: hidden;
+  }
+  
+  .typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    border-radius: 50%;
+    background-color: #0e76a8;
+    animation: blink 1s infinite;
+  }
+  
+  .typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  /* Blink animation for the typing indicator */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Smooth scroll when chat history gets long */
+  .messages {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus styles for inputs */
+  input:focus,
+  button:focus {
+    outline: none;
+    border: 2px solid #0e76a8;
+    box-shadow: 0 0 5px rgba(14, 118, 168, 0.5);
+  }
+  
+  /* Hover effect on input */
+  input:hover {
+    border-color: #0e76a8;
+    box-shadow: 0 2px 8px rgba(14, 118, 168, 0.2);
+  }
+  
+  /* Button hover effect */
+  button:hover {
+    background-color: #0b5d7f;
+    transform: scale(1.05);
+  }
