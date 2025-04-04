@@ -41,4 +41,11 @@ export class ChatComponent implements OnInit {
   closeChat(): void {
     this.chatOpen = false;
   }
+
+  // Metodo per gestire la pressione di un tasto (Enter)
+  onKeydown(event: KeyboardEvent, message: HTMLInputElement): void {
+    if (event.key === 'Enter') {
+      this.sendMessage(message);
+    }
+  }
 }

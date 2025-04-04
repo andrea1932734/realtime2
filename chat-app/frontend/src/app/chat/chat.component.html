@@ -10,7 +10,8 @@
       <div class="messages">
         <div *ngFor="let msg of messages">{{ msg }}</div>
       </div>
-      <input placeholder="Scrivi un messaggio..." #message />
+      <!-- Aggiungi l'evento keydown -->
+      <input placeholder="Scrivi un messaggio..." #message (keydown)="onKeydown($event, message)" />
       <button (click)="sendMessage(message)">Invia</button>
     </div>
     <button class="close-chat-btn" (click)="closeChat()">X</button>
