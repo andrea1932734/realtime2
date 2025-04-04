@@ -9,8 +9,10 @@
     <div class="chat-container">
       <div class="messages">
         <div *ngFor="let msg of messages">{{ msg }}</div>
+
+        <!-- Aggiungi un indicatore di caricamento mentre il server "scrive" -->
+        <div *ngIf="isTyping" class="server-typing">Server sta scrivendo...</div>
       </div>
-      <!-- Aggiungi l'evento keydown -->
       <input placeholder="Scrivi un messaggio..." #message (keydown)="onKeydown($event, message)" />
       <button (click)="sendMessage(message)">Invia</button>
     </div>
